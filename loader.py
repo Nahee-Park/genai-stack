@@ -60,7 +60,9 @@ def insert_so_data(data: dict) -> None:
             a["embedding"] = embeddings.embed_query(
                 question_text + "\n" + a["body_markdown"]
             )
-
+    # Print the data dictionary for debugging
+    print("Data to be inserted:", data)
+    
     # Cypher, the query language of Neo4j, is used to import the data
     # https://neo4j.com/docs/getting-started/cypher-intro/
     # https://neo4j.com/docs/cypher-cheat-sheet/5/auradb-enterprise/
@@ -92,6 +94,10 @@ def insert_so_data(data: dict) -> None:
                   owner.reputation = q.owner.reputation
     MERGE (owner)-[:ASKED]->(question)
     """
+    
+    print("Cypher Query:", import_query)
+    print("Query Parameters:", {"data": data["items"]})
+
     neo4j_graph.query(import_query, {"data": data["items"]})
 
 
