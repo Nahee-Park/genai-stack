@@ -57,12 +57,12 @@ rag_chain = configure_qa_rag_chain(
 # Streamlit UI
 styl = f"""
 <style>
-    /* not great support for :has yet (hello FireFox), but using it for now */
     .element-container:has([aria-label="Select RAG mode"]) {{
       position: fixed;
-      bottom: 33px;
+      bottom: 113px;
       background: white;
       z-index: 101;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }}
     .stChatFloatingInputContainer {{
         bottom: 20px;
@@ -71,6 +71,12 @@ styl = f"""
     /* Generate ticket text area */
     textarea[aria-label="Description"] {{
         height: 200px;
+    }}
+    
+    /* Checkbox label style */
+    .stRadio > label {{
+        color: black;
+        font-size: 16px;
     }}
 </style>
 """
